@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api', { mode: 'cors' })
+    fetch('/api', { mode: 'cors' })
     .then(res => res.json())
     .then(
       (res) => {
@@ -46,43 +46,28 @@ class App extends Component {
   }
 
   updateTodo(idToUpdate, update) {
-      let objIdToUpdate = null;
-      this.state.data.forEach(dat => {
-        if (dat.id === idToUpdate) {
-          objIdToUpdate = dat._id;
-        }
-      });
-  
-      axios.put("/api", {
-        id: objIdToUpdate,
-        update: { description: update.description, status: update.status }
-      });
+    axios.put("/api", {
+      id: idToUpdate,
+      update: { description: update.description, status: update.status }
+    });
   };
 
   deleteTodo(idToDelete) {
-    let objIdToDelete = null;
-    this.state.data.forEach(dat => {
-      if (dat.id === idToDelete) {
-        objIdToDelete = dat._id;
-      }
-    });
-
     axios.delete("/api", {
       data: {
-        id: objIdToDelete
+        id: idToDelete
       }
     });
   }
 
   handleTodoChange(id) {
-    console.log('change!');
-
-    const data = this.state.data;
+    let data = this.state.data.slice(0);
     let obj = null;
     let idx;
+
     for (idx = 0; idx < data.length; idx++) {
-      if (data[idx].id === id) {
-        obj = data[idx];
+      if (data[idx]._id === id) {
+        obj = {...data[idx] };
         break;
       }
     }
@@ -90,10 +75,15 @@ class App extends Component {
     obj.status = obj.status === 'TODO'
       ? 'DONE'
       : 'TODO';
-    data[idx] = obj;
-    this.setState({ data: data });
-
-    this.updateTodo(data[idx].id, data[idx]);
+    axios.put('/api', {
+      id: id,
+      update: { status: obj.status } })
+    .then(res => {
+      if (res.data.success === true) {
+        data[idx] = obj;
+        this.setState({ data: data });
+      }
+    });
   }
 
   render() {

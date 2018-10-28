@@ -11,7 +11,7 @@ function CheckList(props) {
                         key={item._id}
                         description={ item.description }
                         status={ item.status }
-                        handleChange={ () => props.handleTodoChange(item.id) }
+                        handleChange={ () => props.handleTodoChange(item._id) }
                       />
                 )
             }</div>
