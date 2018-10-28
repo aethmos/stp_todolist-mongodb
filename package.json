@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/aethmos/stp_todolist-mongodb/issues"
   },
-  "homepage": "https://github.com/aethmos/stp_todolist-mongodb#readme"
+  "homepage": "https://github.com/aethmos/stp_todolist-mongodb#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
