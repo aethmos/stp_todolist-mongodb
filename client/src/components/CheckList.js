@@ -1,11 +1,12 @@
 import React from 'react';
 import CheckListItem from './CheckListItem';
+import { ListGroup } from 'reactstrap';
 
 function CheckList(props) {
     return (
         <div className='checklist'>
-            <h1>{ props.title }</h1>
-            <div>{
+            <h2>{ props.title }</h2>
+            <ListGroup>{
                 props.items.map((item, i) => 
                 <CheckListItem
                         key={item._id}
@@ -14,7 +15,7 @@ function CheckList(props) {
                         handleChange={ () => props.handleTodoChange(item.id) }
                       />
                 )
-            }</div>
+            }</ListGroup>
         </div>
     );
 }
