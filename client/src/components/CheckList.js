@@ -8,7 +8,7 @@ function CheckList(props) {
             <div>{
                 props.items.map((item, i) => 
                 <CheckListItem
-                        key={i}
+                        key={item._id}
                         description={ item.description }
                         status={ item.status }
                         handleChange={ () => props.handleTodoChange(item.id) }
