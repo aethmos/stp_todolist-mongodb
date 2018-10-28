@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
 // this method overwrites existing data in our database
 router.put("/", (req, res) => {
   const { id, update } = req.body;
-  Data.findOneAndUpdate(id, update, err => {
+  Data.findByIdAndUpdate(id, update, err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });
@@ -55,7 +55,7 @@ router.put("/", (req, res) => {
 // this method removes existing data in our database
 router.delete("/", (req, res) => {
   const { id } = req.body;
-  Data.findOneAndDelete(id, err => {
+  Data.findByIdAndDelete(id, err => {
     if (err) return res.send(err);
     return res.json({ success: true });
   });
