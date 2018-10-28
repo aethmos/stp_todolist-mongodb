@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router();
 
 // this is our MongoDB database
-const dbRoute = "mongodb://todolist_db";
+const dbRoute = "mongodb://localhost:27017/todo-db";
 
 // connects our back end code with the database
 mongoose.connect(
@@ -41,7 +41,7 @@ router.get("/", (req, res) => {
 
 // this is our update method
 // this method overwrites existing data in our database
-router.post("/", (req, res) => {
+router.put("/", (req, res) => {
   const { id, update } = req.body;
   Data.findOneAndUpdate(id, update, err => {
     if (err) return res.json({ success: false, error: err });
@@ -64,16 +64,18 @@ router.delete("/", (req, res) => {
 router.post("/", (req, res) => {
   let data = new Data();
 
-  const { id, message } = req.body;
+  const { id, description, status } = req.body;
 
-  if ((!id && id !== 0) || !message) {
+  if ((!id && id !== 0) || !description || !status) {
     return res.json({
       success: false,
       error: "INVALID INPUTS"
     });
   }
-  data.message = message;
+
   data.id = id;
+  data.description = description;
+  data.status = status;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
