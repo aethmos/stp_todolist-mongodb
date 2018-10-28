@@ -10,7 +10,7 @@
     "react-scripts": "2.0.5"
   },
   "scripts": {
-    "start": "react-scripts start | node-sass --watch src/scss -o public/css",
+    "start": "start react-scripts start && start node-sass --watch src/scss -o public/css",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
