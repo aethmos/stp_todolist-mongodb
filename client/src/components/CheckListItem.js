@@ -5,7 +5,7 @@ function CheckListItem(props) {
     return (
         <ListGroupItem className='checklist__item'>
             <CustomInput 
-                id={ props.key }
+                id={ props._id }
                 type='checkbox'
                 defaultChecked={ props.status === 'DONE' ? 'checked' : ''}
                 onChange={ () => props.handleChange }/>
