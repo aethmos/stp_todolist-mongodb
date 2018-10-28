@@ -5,8 +5,8 @@ function CheckListItem(props) {
         <div className='checklist__item'>
             <input
                 type='checkbox'
-                onChange={ props.onChange }></input>
                 defaultChecked={ props.status === 'DONE' ? 'checked' : ''}
+                onChange={ props.handleTodoChange }></input>
             <div>{ props.description }</div>
         </div>
     );

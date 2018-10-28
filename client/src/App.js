@@ -27,16 +27,24 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  handleTodoChange(id) {
+    // TODO: API - PUT
+    return;
+  }
+
   render() {
+
     return (
       <div>
         <CheckList
           title='ToDo'
           items={ this.state.todos }
+          handleTodoChange={ this.handleTodoChange } />
 
         <CheckList
           title='Erledigt'
           items={ this.state.done }
+          handleTodoChange={ this.handleTodoChange } />
       </div>
     );
   }
