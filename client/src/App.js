@@ -91,12 +91,12 @@ class App extends Component {
     return (
       <div>
         <CheckList
-          title='ToDo'
+          title='To Do'
           items={ this.state.data.filter(o => o.status === 'TODO') }
           handleTodoChange={ (id) => this.handleTodoChange(id) } />
 
         <CheckList
-          title='Erledigt'
+          title='Done'
           items={ this.state.data.filter(o => o.status === 'DONE')  }
           handleTodoChange={ (id) => this.handleTodoChange(id) } />
       </div>

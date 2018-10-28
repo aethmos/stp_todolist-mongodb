@@ -1,14 +1,16 @@
 import React from 'react';
+import { CustomInput, ListGroupItem } from 'reactstrap';
 
 function CheckListItem(props) {
     return (
-        <div className='checklist__item'>
-            <input
+        <ListGroupItem className='checklist__item'>
+            <CustomInput 
+                id={ props._id }
                 type='checkbox'
                 defaultChecked={ props.status === 'DONE' ? 'checked' : ''}
-                onChange={ () => props.handleChange() }></input>
-            <div>{ props.description }</div>
-        </div>
+                onChange={ () => props.handleChange }/>
+            <div className='textfield'>{ props.description }</div>
+        </ListGroupItem>
     );
 }
 
