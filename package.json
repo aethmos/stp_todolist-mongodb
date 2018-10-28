@@ -1,0 +1,23 @@
+{
+  "name": "stp_todolist-mongodb",
+  "version": "1.0.0",
+  "description": "A todo-list web-app using React and node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aethmos/stp_todolist-mongodb.git"
+  },
+  "keywords": [
+    "react",
+    "mongodb"
+  ],
+  "author": "Alexander Klein, Dennis Osipov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aethmos/stp_todolist-mongodb/issues"
+  },
+  "homepage": "https://github.com/aethmos/stp_todolist-mongodb#readme"
+}
