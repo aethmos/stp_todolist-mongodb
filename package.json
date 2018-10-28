@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/aethmos/stp_todolist-mongodb#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8"
   }
 }
