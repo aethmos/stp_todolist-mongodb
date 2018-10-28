@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import CheckListItem from './components/CheckListItem.js'
 
 class App extends Component {
   render() {
     return (
-      <div>THIS IS GREAT SUCCESS.</div>
+      <div>
+      </div>
     );
   }
 }
