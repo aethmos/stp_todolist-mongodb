@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckList from './components/CheckList';
+import { CheckList, CheckListMutable } from './components/CheckList';
 import axios from 'axios';
 
 class App extends Component {
@@ -90,7 +90,7 @@ class App extends Component {
 
     return (
       <div>
-        <CheckList
+        <CheckListMutable
           title='To Do'
           items={ this.state.data.filter(o => o.status === 'TODO') }
           handleTodoChange={ (id) => this.handleTodoChange(id) } />
