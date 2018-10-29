@@ -33,12 +33,15 @@ input[type="checkbox"]:focus{
 }
 
 // checklist
+$mobile_width: 720px;
+
 $vert_margin: 60px;
 $hor_margin: auto;
 .checklist {
     height: auto;
     width: 33%;
     width: 33vw;
+    min-width: $mobile_width - 8px;
     margin: $vert_margin $hor_margin;
     display: flex;
     flex-flow: column nowrap;
@@ -65,11 +68,11 @@ $hor_margin: auto;
     }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: $mobile_width) {
     .checklist {
         $hor_margin: 4px;
         width: calc(100% - (#{$hor_margin} * 2));
-        margin: $vert_margin $hor_margin;
+        min-width: auto;
     }
 }
 
