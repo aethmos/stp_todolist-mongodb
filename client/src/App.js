@@ -90,11 +90,11 @@ class App extends Component {
   }
 
   _handleKeyPress(e) {
-    if (e.key === 'Enter' && e.target.value !== '') {
+    if (e.key === 'Enter' && e.target.value.trim()) {
       
       // to access event inside callback
       e.persist();
-      this.addTodo(e.target.value, (err, res) => {
+      this.addTodo(e.target.value.trim(), (err, res) => {
         if (err) {
           console.log(err); return;
         }
