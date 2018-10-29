@@ -4,6 +4,8 @@
   "description": "A todo-list web-app using React and node.js",
   "main": "index.js",
   "scripts": {
+    "start": "parallelshell \"cd backend && npm start\" \"cd client && npm start\"",
+    "postinstall": "parallelshell \"cd backend && npm install\" \"cd client && npm install\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +26,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
     "express": "^4.16.4",
-    "mongodb": "^3.1.8"
+    "mongodb": "^3.1.8",
+    "parallelshell": "3.0.1"
   }
 }
