@@ -1,4 +1,4 @@
-# Basic Todo Web App
+# Minimal Todo Web App
 
 This project is a minimal web app with a todo list that you can use via the browser.<br>
 
