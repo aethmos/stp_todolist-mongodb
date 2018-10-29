@@ -10,9 +10,7 @@ function CheckList(props) {
                 props.items.map((item, i) => 
                 <CheckListItem
                         key={item._id}
-                        _id={item._id}
-                        description={ item.description }
-                        status={ item.status }
+                        {...item}
                         handleChange={ () => props.handleTodoChange(item._id) }
                       />
                 )
