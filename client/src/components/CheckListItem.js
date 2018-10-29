@@ -7,8 +7,19 @@ function CheckListItem(props) {
             
             <div className='icon'>
                 <label className="checkbox" htmlFor={ props._id }>
-                    <input type="checkbox" defaultChecked={ props.status === 'DONE' ? 'checked' : ''} value="" id={ props._id } data-toggle="checkbox" className="custom-checkbox" onChange={ () => props.handleChange }/>
-                    <span className="icons"><span className="icon-unchecked"></span><span className="icon-checked"></span></span>
+                    <input
+                      type="checkbox"
+                      defaultChecked={ props.status === 'DONE' ? 'checked' : ''}
+                      value=""
+                      id={ props._id }
+                      data-toggle="checkbox"
+                      className="custom-checkbox"
+                      onChange={ () => props.handleChange() } />
+
+                    <span className="icons">
+                      <span className="icon-unchecked"></span>
+                      <span className="icon-checked"></span>
+                    </span>
                     {/* label text */}
                 </label>
             </div>
