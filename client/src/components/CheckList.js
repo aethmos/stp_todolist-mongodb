@@ -8,11 +8,11 @@ function CheckList(props) {
             <h2>{ props.title }</h2>
             <ListGroup>{
                 props.items.map((item, i) => 
-                <CheckListItem
+                    <CheckListItem
                         key={item._id}
                         {...item}
                         handleChange={ () => props.handleTodoChange(item._id) }
-                      />
+                    />
                 )
             }</ListGroup>
         </div>
@@ -28,11 +28,9 @@ function CheckListMutable(props) {
                 <CheckListItem
                         key={item._id}
                         {...item}
-                        handleChange={ () => props.handleTodoChange(item._id) }
-                      />
-                )
-            }
-            <CheckListItemTemplate/></ListGroup>
+                        handleChange={ () => props.handleTodoChange(item._id) } /> )
+                }<CheckListItemTemplate handleKeyPress={ (e) => props.handleKeyPress(e) } />
+            </ListGroup>
         </div>
     );
 }

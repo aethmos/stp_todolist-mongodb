@@ -34,7 +34,11 @@ function CheckListItemTemplate(props) {
             <div className='icon'>
                 <span className="fui-plus icon"></span>
             </div>
-            <input type='text' className='textfield custom-control' placeholder='Add new task'/>
+            <input
+              type='text'
+              className='textfield custom-control'
+              placeholder='Add new task'
+              onKeyPress={ (e) => props.handleKeyPress(e) }/>
         </ListGroupItem>
     );
 }

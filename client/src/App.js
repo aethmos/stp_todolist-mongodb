@@ -26,7 +26,7 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
-  addTodo(description) {
+  addTodo(description, callback) {
     let currentIds = this.state.data.map(data => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
@@ -39,16 +39,21 @@ class App extends Component {
       status: "TODO"
     })
     .then((res) => {
-      // handle success
-
-      console.log(res.data);
+      callback(null, res.data.data);
     });
   }
 
-  updateTodo(idToUpdate, update) {
+  updateTodo(idToUpdate, update, callback) {
     axios.put("/api", {
       id: idToUpdate,
-      update: { description: update.description, status: update.status }
+      update: update,
+    })
+    .then((res) => {
+      if (res.result === 'success') {
+        callback(null);
+      } else {
+        callback(`Update failed of todo #${idToUpdate}.`);
+      }
     });
   };
 
@@ -60,14 +65,14 @@ class App extends Component {
     });
   }
 
-  handleTodoChange(id) {
-    let data = this.state.data.slice(0);
-    let obj = null;
+  _handleTodoChange(id) {
+    var data = this.state.data.slice(0);
+    var obj = null;
     let idx;
 
     for (idx = 0; idx < data.length; idx++) {
       if (data[idx]._id === id) {
-        obj = {...data[idx] };
+        obj = { ...data[idx] };
         break;
       }
     }
@@ -75,15 +80,34 @@ class App extends Component {
     obj.status = obj.status === 'TODO'
       ? 'DONE'
       : 'TODO';
-    axios.put('/api', {
-      id: id,
-      update: { status: obj.status } })
-    .then(res => {
-      if (res.data.success === true) {
-        data[idx] = obj;
-        this.setState({ data: data });
-      }
+
+    this.updateTodo(obj._id, { status: obj.status }, (err) => {
+      if (err) console.log(err);
+
+      data[idx] = obj;
+      this.setState({ data: data });
     });
+  }
+
+  _handleKeyPress(e) {
+    if (e.key === 'Enter' && e.target.value !== '') {
+      
+      // to access event inside callback
+      e.persist();
+      this.addTodo(e.target.value, (err, res) => {
+        if (err) {
+          console.log(err); return;
+        }
+
+        // update state
+        let newData = this.state.data.splice(0);
+        newData.push(res);
+        this.setState({ data: newData });
+
+        // reset input field
+        e.target.value = '';
+      });
+    }
   }
 
   render() {
@@ -93,12 +117,13 @@ class App extends Component {
         <CheckListMutable
           title='To Do'
           items={ this.state.data.filter(o => o.status === 'TODO') }
-          handleTodoChange={ (id) => this.handleTodoChange(id) } />
+          handleTodoChange={ (id) => this._handleTodoChange(id) }
+          handleKeyPress={ (e) => this._handleKeyPress(e) } />
 
         <CheckList
           title='Done'
           items={ this.state.data.filter(o => o.status === 'DONE')  }
-          handleTodoChange={ (id) => this.handleTodoChange(id) } />
+          handleTodoChange={ (id) => this._handleTodoChange(id) } />
       </div>
     );
   }
