@@ -1,3 +1,5 @@
+$color-primary: #1abc9c;
+
 // reset
 html, body {
     background: #eee;
@@ -60,23 +62,52 @@ $hor_margin: auto;
 
 .checklist__item {
     width: 100%;
-    padding: 10px 20px;
+    padding: 10px 5px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 
-    .custom-checkbox {
-        width: auto;
-        cursor: pointer;
+    div.icon {
+        margin: auto 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-flow: column nowrap;
+        text-align: center;
+        
+        .custom-checkbox, .add-icon {
+            cursor: pointer;
+        }
+        label {
+            padding: 0;
+            margin: 0;
+            width: 50%;
+        }
+        span.icon {
+            opacity: 0.8;
+            transition: all .2s;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+                transition: all .2s;
+                color: $color-primary;
+            }
+        }
     }
     
     .textfield {
-        padding: 10px;
+        padding: 5px 0px;
+        width: 100%;
         display: flex;
         flex-flow: row nowrap;
         align-items: flex-start;
         text-align: left;
         font-size: 1.4em;
         font-weight: 600;
+        // background: #eee;
+        border: none;
     }
 }
