@@ -43,6 +43,19 @@ $hor_margin: auto;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    .checklist__item {
+        opacity: 0.6;
+        transition: opacity .2s;
+        &:hover {
+            transition: opacity .2s;
+            opacity: 1;
+        }
+    }
+    &.mutable .checklist__item {
+        transition: opacity .2s;
+        opacity: 1;
+    }
+
     h2 {
         align-self: flex-start;
         margin: 0 auto 50px;
