@@ -61,7 +61,7 @@ router.delete("/", (req, res) => {
   });
 });
 
-// this is our create methid
+// this is our create method
 // this method adds new data in our database
 router.post("/", (req, res) => {
   let data = new Data();
@@ -78,9 +78,9 @@ router.post("/", (req, res) => {
   data.id = id;
   data.description = description;
   data.status = status;
-  data.save(err => {
+  data.save((err, product) => {
     if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
+    return res.json({ success: true, data: product });
   });
 });
 
