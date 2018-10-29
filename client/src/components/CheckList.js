@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckListItem from './CheckListItem';
+import { CheckListItem, CheckListItemTemplate } from './CheckListItem';
 import { ListGroup } from 'reactstrap';
 
 function CheckList(props) {
@@ -19,4 +19,22 @@ function CheckList(props) {
     );
 }
 
-export default CheckList;
+function CheckListMutable(props) {
+    return (
+        <div className='checklist mutable'>
+            <h2>{ props.title }</h2>
+            <ListGroup>{
+                props.items.map((item, i) => 
+                <CheckListItem
+                        key={item._id}
+                        {...item}
+                        handleChange={ () => props.handleTodoChange(item._id) }
+                      />
+                )
+            }
+            <CheckListItemTemplate/></ListGroup>
+        </div>
+    );
+}
+
+export { CheckList, CheckListMutable };
