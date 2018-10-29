@@ -9,16 +9,12 @@ html, body {
     border-radius: 0;
 }
 
-#root {
+#root, #root > div {
     width: 100%;
     width: 100vw;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    > div {
-        width: 60%;
-        width: 60vw;
-    }
 }
 
 div {
@@ -37,25 +33,38 @@ input[type="checkbox"]:focus{
 // checklist
 .checklist {
     height: auto;
-    margin: 50px auto;
+    width: 33%;
+    width: 33vw;
+    margin: 60px auto;
     display: flex;
     flex-flow: column nowrap;
-    align-items: left;
+    align-items: center;
     h2 {
-        align-self: center;
-        margin: 0 auto 40px;
+        align-self: flex-start;
+        margin: 0 auto 50px;
+    }
+    ul {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .checklist {
+        width: 100%;
+        width: 100vw;
     }
 }
 
 .checklist__item {
+    width: 100%;
     padding: 10px 20px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    cursor: pointer;
 
     .custom-checkbox {
         width: auto;
+        cursor: pointer;
     }
     
     .textfield {
